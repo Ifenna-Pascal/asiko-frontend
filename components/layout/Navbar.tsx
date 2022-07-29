@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { IModal } from '../../interfaces'
+import { Modal } from '../modals'
+import AddPostModal from '../modals/AddPostModal'
 
-function Navbar() {
+function Navbar(props : IModal) {
   return (
     <nav className='md:sticky fixed bottom-0 md:top-0 flex md:px-16 z-50  md:shadow-none justify-between md:space-x-12 bg-white items-center  mx-auto md:py-6 w-full'>
       
@@ -33,7 +36,7 @@ function Navbar() {
               <i className="ri-chat-3-line  text-2xl text-gray-500 cursor-pointer"></i>
           </div>
           <div className='hidden  md:flex items-center  cursor-pointer'>
-            <button className="px-10 font-semibold font-Poppins text-white flex items-center justify-center py-3 border-none rounded-3xl bg-[#006ECF]">Add Post <i className="ri-add-line ml-2"></i></button>
+            <button className="px-10 font-semibold font-Poppins text-white flex items-center justify-center py-3 border-none rounded-3xl bg-[#006ECF]" onClick={() => props.setModal?.(!props.modal)}>Add Post <i className="ri-add-line ml-2" ></i></button>
           </div>
           </div>
           <div className='w-full md:hidden flex items-center shadow-xl  shadow-slate-50 rounded-t-[20px] mx-auto py-4 px-8 justify-between'>
@@ -49,6 +52,9 @@ function Navbar() {
                     <span className="text-[14px] font-Poppins text-[#62666A]"> Profile </span>
                 </div>
           </div>
+            <Modal isOpen={props.modal} closeModal={() => props.setModal(false)}>
+            <AddPostModal modal={props.modal} />
+            </Modal>
     </nav>
   )
 }

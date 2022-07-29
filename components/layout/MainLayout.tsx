@@ -1,13 +1,16 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useContext, useState } from 'react'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import "remixicon/fonts/remixicon.css";
+import { Modalcontext } from '../context/ModalContext';
+import AddPostModal from '../modals/AddPostModal';
 
 interface IMainLayout {
     children: ReactNode
   }
 
 function MainLayout({children} : IMainLayout ) {
+  const [modal, setModal] = useState<boolean>(false);
   return (
     <div className="flex h-full w-full">
         <Sidebar />
@@ -17,8 +20,8 @@ function MainLayout({children} : IMainLayout ) {
             <img src="/imgs/logo.png" alt="logo" className='w-full object-center' />
         </div>
         </div>
-            <Navbar />
-            <main className='w-full h-full flex flex-col items-center justify-center'>
+            <Navbar modal={modal} setModal={setModal} />
+            <main className='w-full h-full relative flex flex-col items-center justify-center'>
                 {children}
             </main>
         </div>
