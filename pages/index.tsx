@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { signIn, useSession } from "next-auth/react"
 import { useRouter } from 'next/router';
-import { signIn } from "next-auth/react"
 
 function Index() {
+  const router = useRouter();
+  const {status} = useSession();
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/dashboard');
+    } 
+  }, [status])
   return (
     <div className='background justify-center relative flex items-center  bg-center bg-cover w-screen h-screen'>
         <div className="max-w-[600px] h-full absolute bottom-0 md:bottom-auto w-full  shadow-xl opacity-70 rounded-t-[40px] max-h-[320px] md:max-h-[400px] bg-white md:rounded-[20px] flex flex-col items-center justify-center">

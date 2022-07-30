@@ -17,6 +17,7 @@
     "remixicon": "^2.5.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",

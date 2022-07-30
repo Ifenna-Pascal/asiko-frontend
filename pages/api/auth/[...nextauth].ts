@@ -1,13 +1,14 @@
 import GoogleProvider from "next-auth/providers/google";
 import NextAuth from "next-auth"
 import axios from "axios";
+import { SignToken } from "../../../utils/siginToken";
 
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: "164982727604-kir7ngfgjvbgmpvsa9430qolgess4u9q.apps.googleusercontent.com",
-      clientSecret: "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"
+      clientId: <string>process.env.GOOGLE_CLIENT_ID,
+      clientSecret:  <string>process.env.GOOGLE_CLIENT_SECRET
     })
     // ...add more providers here
   ],
@@ -16,6 +17,11 @@ export default NextAuth({
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60,
   },
+   pages: {
+    signIn: '/',
+    signOut: '/',
+    // error: '/auth/error',
+   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       const response = await axios.post("http://localhost:9000/v1/auth/userExists", { email: profile.email })
@@ -36,19 +42,14 @@ export default NextAuth({
     async jwt({ token, user, account }) {
       // Persist the OAuth access_token to the token right after signin
       if (account) {
-        console.log(token, "tokene");
-        console.log(user, "userr");
-        console.log(account, "accounts")
-        token.accessToken = account.access_token
+        const userLoggedIn = await SignToken(user?.email as string) 
+        token.loggedUser = userLoggedIn; 
       }
       return token
     },
     async session({ session, token, user }) {
-      console.log(session, "sessionnnnnn");
-      console.log(token, "tokennnn");
-      console.log(user, "usernnnn")
       // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken
+      session.loggedUser = token.loggedUser
       return session
     }
   }

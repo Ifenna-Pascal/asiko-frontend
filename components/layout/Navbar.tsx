@@ -1,9 +1,11 @@
+import { useSession } from 'next-auth/react';
 import React, { useContext } from 'react'
 import { IModal } from '../../interfaces'
 import { Modal } from '../modals'
 import AddPostModal from '../modals/AddPostModal'
 
 function Navbar(props : IModal) {
+  const {data : user} = useSession();
   return (
     <nav className='md:sticky fixed bottom-0 md:top-0 flex md:px-16 z-50  md:shadow-none justify-between md:space-x-12 bg-white items-center  mx-auto md:py-6 w-full'>
       
@@ -31,7 +33,7 @@ function Navbar(props : IModal) {
           </div>
           <div className="md:flex hidden grow justify-between  space-x-8 ">
           <div className="flex justify-between ml-12 grow  px-8 items-center">
-              <i className="ri-user-line text-2xl  text-gray-500 cursor-pointer"></i>
+              <i className="ri-user-line hidden md:block  text-2xl text-gray-500  cursor-pointer"></i>  
               <i className="ri-notification-4-line  text-2xl text-gray-500  cursor-pointer"></i>
               <i className="ri-chat-3-line  text-2xl text-gray-500 cursor-pointer"></i>
           </div>
@@ -48,7 +50,7 @@ function Navbar(props : IModal) {
                     <i className="ri-add-line  text-xl font-Poppins font-semibold text-white "></i>
                 </div>
                 <div className='flex items-center flex-col justify-center'>
-                <i className="ri-user-line text-2xl  text-gray-500 cursor-pointer"></i>
+                <div className="flex items-center w-[30px] h-[30px]"><img alt='user_image' src={user?.user?.image as string} className="w-full h-full md:hidden rounded-[50%]" /></div>
                     <span className="text-[14px] font-Poppins text-[#62666A]"> Profile </span>
                 </div>
           </div>
