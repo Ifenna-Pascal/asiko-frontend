@@ -17,8 +17,8 @@ function Navbar(props : IModal) {
     setModal(false);
   }
   return (
-   <div className='sticky top-0 z-50 shadow-xl bg-white '>
-     <nav className='sticky  top-0 flex px-6 lg:px-0  z-30 lg:bg-AS-grey-100  dark:bg-AS-dark-100 md:shadow-none justify-between   items-center  mx-auto md:pt-6 h-[90px] lg:pb-4 w-full'>
+   <div className='sticky top-0 z-50 shadow-xl lg:shadow-none bg-white '>
+     <nav className='sticky  top-0 flex px-6 lg:px-0  z-30 lg:bg-AS-grey-100  dark:bg-AS-dark-100  justify-between   items-center  mx-auto md:pt-6 h-[90px] lg:pb-4 w-full'>
       <div className='flex items-center w-full justify-between'>
           <SearchBar />
          <div className='lg:mr-8'>
