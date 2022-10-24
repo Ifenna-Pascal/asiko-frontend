@@ -12,6 +12,9 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+
+  secret: <string>process.env.NEXT_PUBLIC_SECRET,
+
   // session: {
   //   updateAge: 0,
   //   strategy: 'jwt',
