@@ -3,7 +3,7 @@ import Avartar from '../general/Avartar'
 
 function Trending() {
   return (
-    <div className='mb-4 w-full bg-white rounded-md dark:bg-AS-dark-200 p-6 hidden lg:flex flex-col'>
+    <div className='my-4  w-full bg-white rounded-md dark:bg-AS-dark-200 p-6 hidden lg:flex flex-col'>
        <p className='font-Poppins text-AS-grey-400 dark:text-white font-semibold text-xl mb-5'>Trendings</p>
       <Trend 
         trend='Would you visit a Mule Sauce res...'
