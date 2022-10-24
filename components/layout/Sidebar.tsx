@@ -15,7 +15,7 @@ function Sidebar() {
     const {addPostModal, togglePostModal, closeModal} = useContext(Modalcontext);
 
   return (
-    <div className='fixed bottom-0 lg:left-0 flex  flex-row lg:flex-col lg:w-[250px] w-full dark:bg-AS-dark-200 bg-white lg:bg-transparent  lg:h-screen z-40 py-4 lg:py-6'>
+    <div className='fixed bottom-0 lg:left-0 flex  flex-row lg:flex-col lg:w-[250px] w-full dark:bg-AS-dark-200 lg:dark:bg-transparent shadow-2xl lg:shadow-none bg-white lg:bg-transparent  lg:h-screen z-40 py-3 lg:py-6'>
        <div className='flex w-full lg:px-6 lg:py-4 flex-row lg:flex-col items-center  lg:items-end '>
         <div className='w-[80px] hidden lg:block pb-4' >
             <img src="/imgs/logo.png" alt="logo" className='w-full object-center' />

@@ -34,7 +34,7 @@ export default function FileInput({  modal }: IProps) {
   };
 
   return (
-    <div className={`min-w-[600px] w-full overlay-x-10 absolute flex flex-col items-center justify-center dark:bg-AS-dark-200 ${modal ? "block translate-y-[30%] opacity-100" : "hidden opacity-0  translate-y-0"} z-50 min-h-[300px] duration-400  -translate-x-[50%] left-[50%] mx-auto bg-white  rounded-md shadow-xl p-6`}>
+    <div className={`lg:min-w-[600px] w-full overlay-x-10 absolute flex flex-col items-center justify-center dark:bg-AS-dark-200 ${modal ? "block translate-y-[50%]  lg:translate-y-[30%] opacity-100" : "hidden opacity-0  translate-y-0"} z-50 min-h-[300px] duration-400  -translate-x-[50%] left-[50%] mx-auto bg-white  rounded-md shadow-xl p-6`}>
     <div className="flex flex-col items-center h-full w-full gap-4">
             {acceptedFiles.length > 0 ? <SelectedFiles /> :    <div
                 className="flex flex-col items-center justify-center w-full gap-1 px-6 h-full py-6 bg-white dark:bg-slate-700 border rounded-lg cursor-pointer border-slate-300"

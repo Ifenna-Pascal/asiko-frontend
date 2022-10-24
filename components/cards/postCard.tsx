@@ -5,7 +5,7 @@ import Avartar from '../general/Avartar';
 
 function PostCard({ name, username, img, postImg, time, content}: IPost ) {
   return (
-    <div className='mb-4 w-full cursor-pointer  bg-white dark:bg-AS-dark-200 rounded-md pl-4 py-4 pr-0 pb-0 flex'>
+    <div className='mb-4 w-full cursor-pointer   bg-white dark:bg-AS-dark-200 rounded-md pl-4 py-4 pr-0 pb-0 flex'>
       <div className='flex items-start justify-start'>
         <Avartar className='lg:w-[50px] w-[30px] h-[30px] lg:h-[50px] rounded-[50%]' img={img} />
       </div>

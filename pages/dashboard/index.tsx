@@ -7,7 +7,7 @@ const IndexPage = (props: any) => {
   console.log(props);
   return (
     <div className='flex'>
-      <div className="lg:max-w-[720px] w-full lg:mr-6">
+      <div className="lg:max-w-[720px] mx-3 my-4 w-full lg:mr-6">
       <PostCard 
         time="15mins"
         name="Ifenna Monanu"

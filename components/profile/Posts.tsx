@@ -3,7 +3,7 @@ import PostCard from '../cards/postCard'
 
 function Posts() {
   return (
-    <div className='max-w-[720px] my-4'>
+    <div className='max-w-[720px] mx-3 my-4'>
         {/* <PostCard
         time="15mins"
         name="Ifenna Monanu"
