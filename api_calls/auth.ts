@@ -2,8 +2,7 @@ import axios from 'axios';
 import { User } from '../interfaces';
 
 export const userExists = async (email: String): Promise<any> => {
-    const response = await axios.post('https://churchblog.herokuapp.com/api/ping', { email });
-    // const response = 
+    const response = await axios.post('https://churchblog.herokuapp.com/api/ping', { email }); 
     return typeof (response) === 'string' ? true : false
 }
 

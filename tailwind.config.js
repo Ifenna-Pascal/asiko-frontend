@@ -1,19 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+const pallet = require("./utils/colors");
+
 module.exports = {
-  purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
-  ],
-  darkMode: false, // or 'media' or 'class'
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
-      fontFamily:{
-        Poppins: ['Poppins', 'sans-serif']
-      }
+      colors: {
+        AS: { ...pallet },
+      },
+      fontFamily: {
+        Poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

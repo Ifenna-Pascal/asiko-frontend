@@ -7,13 +7,14 @@ export interface IUser {
 }
 
 export interface IPost extends IUser {
-  postImg: string;
+  postImg?: string;
   content: string;
+  time: string;
 }
 
 export interface IModal {
-  modal:boolean;
-  setModal?: any
+  modal: boolean;
+  setModal?: any;
 }
 
 export interface User {
@@ -24,6 +25,7 @@ export interface User {
 }
 
 export interface IPostModal {
+  closeModal: () => void;
   togglePostModal: () => void;
-  addPostModal: Boolean
+  addPostModal: Boolean;
 }

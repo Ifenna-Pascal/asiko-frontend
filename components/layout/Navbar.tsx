@@ -1,15 +1,52 @@
 import { useSession } from 'next-auth/react';
-import React, { useContext } from 'react'
+import React, { useState } from 'react';
 import { IModal } from '../../interfaces'
+import Avartar from '../general/Avartar';
+import SearchBar from '../general/SearchBar';
 import { Modal } from '../modals'
-import AddPostModal from '../modals/AddPostModal'
+import NavModal from '../modals/NavModal';
+
 
 function Navbar(props : IModal) {
   const {data : user} = useSession();
+  const [modal, setModal] = useState<boolean> (false);
+  const toggleModal = () => {
+    setModal(!modal);
+  }
+  const closeModal = () => {
+    setModal(false);
+  }
   return (
-    <nav className='md:sticky fixed bottom-0 md:top-0 flex md:px-16 z-50  md:shadow-none justify-between md:space-x-12 bg-white items-center  mx-auto md:py-6 w-full'>
-      
-         <div className="relative w-[30%] md:ml-8 grow  md:flex hidden  items-center">
+   <div className='sticky top-0 z-50 bg-white '>
+     <nav className='sticky  top-0 flex px-6 lg:px-0  z-30 lg:bg-AS-grey-100 dark:bg-AS-dark-100 md:shadow-none justify-between   items-center  mx-auto md:pt-6 h-[90px] lg:pb-4 w-full'>
+      <div className='flex items-center w-full justify-between'>
+          <SearchBar />
+         <div className='lg:mr-8'>
+         <Avartar 
+          className={'w-[40px] lg:w-[60px] h-[40px] lg:h-[60px]'} 
+          img= {user?.user?.image as string}
+          onClick={toggleModal}
+        />
+        </div>
+        <div className='w-[80px] lg:hidden ' >
+            <img src="/imgs/logo.png" alt="logo" className='w-full object-center' />
+         </div>
+        <div className='lg:hidden'>
+        <i className="ri-search-2-line text-AS-grey-300 font-semibold text-2xl"></i>
+        </div>
+      </div>
+        
+    </nav>
+       <div className={`${modal ? 'lg:translate-x-0' : 'lg:translate-x-[120%]'} absolute right-0 z-50 duration-500`}>
+       <NavModal modal ={modal} closeModal={closeModal} />  
+       </div>
+   </div>
+  )
+}
+
+export default Navbar
+
+ {/* <div className="relative w-[30%] md:ml-8 grow  md:flex hidden  items-center">
             <input
               type="text"
               className="w-full pl-3  py-[.5rem] text-gray-700  bg-[#F0F0F0]   rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 rounded-lg h-[45px]  dark:focus:border-blue-300 text-[14px] font-Poppins focus:outline-none"
@@ -50,15 +87,10 @@ function Navbar(props : IModal) {
                     <i className="ri-add-line  text-xl font-Poppins font-semibold text-white "></i>
                 </div>
                 <div className='flex items-center flex-col justify-center'>
-                <div className="flex items-center w-[30px] h-[30px]"><img alt='user_image' src={user?.user?.image as string} className="w-full h-full md:hidden rounded-[50%]" /></div>
+                <div className="flex items-center w-[30px] h-[30px]"><img alt='user_image' src={user?.user?.user?.user?.image as string} className="w-full h-full md:hidden rounded-[50%]" /></div>
                     <span className="text-[14px] font-Poppins text-[#62666A]"> Profile </span>
                 </div>
           </div>
             <Modal isOpen={props.modal} closeModal={() => props.setModal(false)}>
             <AddPostModal modal={props.modal} />
-            </Modal>
-    </nav>
-  )
-}
-
-export default Navbar
+            </Modal> */}

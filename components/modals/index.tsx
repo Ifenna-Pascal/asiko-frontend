@@ -13,7 +13,7 @@ export  const Modal = ({ isOpen, closeModal, children }:IModal) => {
 		<Transition appear show={isOpen} as={Fragment}>
 			<Dialog
 				as='div'
-				className='overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full bg-theme-dark bg-opacity-70  md:inset-0 h-full md:h-full md:max-h-fit flex justify-center items-center'
+				className='overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full bg-gray-900 bg-opacity-70  md:inset-0 h-full md:h-full md:max-h-fit flex justify-center items-center'
 				onClose={closeModal}
 			>
 				<div className='relative p-4 w-full max-w-xl h-full'>
@@ -26,25 +26,8 @@ export  const Modal = ({ isOpen, closeModal, children }:IModal) => {
 						leaveFrom='opacity-100 scale-100'
 						leaveTo='opacity-0 scale-95'
 					>
-						<Dialog.Panel className='relative transform bg-theme-card shadow-xl transition-all border-2 border-theme-main rounded-[10px] p-4'>
-							{/* <div className='flex items-center justify-between p-1 md:p-2'>
-								
-								<div>
-									{step !== 0 && (
-										<button className='text-[20px] text-theme-main' onClick={prevStep}>
-											<Icon icon={'ri-arrow-left-line'} />
-										</button>
-									)}
-								</div>
-								<div>
-									<button
-										className='text-[20px] text-white hover:text-theme-100'
-										onClick={closeModal}
-									>
-										<Icon icon={'ri-close-fill'} />
-									</button>
-								</div>
-							</div> */}
+						<Dialog.Panel className='relative transform b shadow-xl transition-all'>
+						 
 							{/* End of action button */}
 							<div className='lg:p-2'>{children}</div>
 						</Dialog.Panel>

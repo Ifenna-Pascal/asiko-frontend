@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import "remixicon/fonts/remixicon.css";
 import { Modalcontext } from '../context/ModalContext';
 import AddPostModal from '../modals/AddPostModal';
+import Trending from '../cards/Trending';
 
 interface IMainLayout {
     children: ReactNode
@@ -12,18 +13,18 @@ interface IMainLayout {
 function MainLayout({children} : IMainLayout ) {
   const [modal, setModal] = useState<boolean>(false);
   return (
-    <div className="flex h-full w-full">
+    <div className="flex bg-white lg:bg-AS-grey-100 dark:bg-AS-dark-100 h-full w-full">
         <Sidebar />
-        <div className="md:bg-[#E5E5E5] bg-[#f5f1f1] w-full min-h-screen md:ml-[250px] relative flex flex-col">
-        <div className="bg-white block md:hidden shadow-xl py-6 sticky -top-1 z-50 w-full">
-        <div className='flex items-center md:hidden   justify-center   mx-auto w-[90px] flex-col'>
-            <img src="/imgs/logo.png" alt="logo" className='w-full object-center' />
-        </div>
-        </div>
+        <div className="w-full min-h-screen md:px-6 md:ml-[250px] relative flex flex-col">
             <Navbar modal={modal} setModal={setModal} />
-            <main className='w-full h-full relative flex flex-col items-center justify-center'>
+           <div className='lg:grid grid-cols-5'>
+           <main className='w-full lg:col-span-3  h-full relative flex flex-col'>
                 {children}
             </main>
+            <div className='lg:col-span-2 w-full'>
+          <Trending />
+          </div>
+           </div>
         </div>
     </div>
   )
